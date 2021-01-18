@@ -6,7 +6,7 @@
 sudo apt install libeigen3-dev
 ```
 
-## 方法1:
+### 方法1:
 
 若默认安装的在/usr/include/eigen3/Eigen或者/usr/local/include/eigen3/Eigen下，将Eigen文件夹拷贝一到/usr/include 下
 
@@ -23,7 +23,7 @@ find_package(Eigen3 REQUIRED)
 include_directories(${Eigen3_INCLUDE_DIRS})
 ```
 
-## 方法2: 
+### 方法2: 
 
 链接对应的文件
 
