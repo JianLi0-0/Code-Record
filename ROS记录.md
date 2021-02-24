@@ -87,7 +87,15 @@ Ctrl + shift+B 选择 catkin_make 之后在devel下面会生成一个compile_com
 
 #### 代码补全
 
-ctrl+shift+p，输入C/C++:Edit Configuration进行调整
+在c_cpp_properties.json中添加
+
+```
+"compileCommands": "${workspaceFolder}/build/compile_commands.json"
+```
+
+这个是C/C++ extension 的 auto config intellisense 功能。
+
+(或者 ctrl+shift+p，输入C/C++:Edit Configuration进行调整 ？ )
 
 
 
@@ -98,6 +106,44 @@ ctrl+shift+p，输入C/C++:Edit Configuration进行调整
 ```
 python3 -m pip install rospkg
 ```
+
+
+
+## 安装PCL
+
+```
+sudo apt install libpcl-dev
+```
+
+
+
+## 当gazebo版本与ros默认版本冲突时
+
+```
+sudo apt install ros-kinetic-desktop-full
+```
+
+上述指令默认安装gazebo7。
+
+若想安装其他版本，使用：
+
+```
+sudo apt install ros-kinetic-desktop
+```
+
+再独立安装想要的gazebo版本。
+
+最后用下列指令安装gazebo-ros：
+
+```
+sudo apt-get install ros-kinetic-gazebo8-ros-pkgs ros-kinetic-gazebo8-ros-control
+```
+
+
+
+
+
+
 
 
 
