@@ -12,7 +12,7 @@ ssh-keygen
 ```
 cat id_rsa.pub >> authorized_keys
 ls  =>查看确保生成功authorized_keys
-scp authorized_keys name@server_ip:/home/name/.ssh
+scp authorized_keys ur5e@10.20.4.81:/home/ur5e/.ssh/authorized_keys
 ```
 
 在服务器上更改私钥权限。打开SSH配置文件，禁用密码登陆(选项)。最后重启ssh服务

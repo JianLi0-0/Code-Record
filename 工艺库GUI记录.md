@@ -118,6 +118,6 @@ pip3 install pyside2 -i https://mirrors.aliyun.com/pypi/simple/
 安装redis
 
 ```
-pip3 install redis
+pip3 install redis -i https://mirrors.aliyun.com/pypi/simple/
 sudo apt-get install redis-server
 ```
