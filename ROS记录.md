@@ -9,11 +9,23 @@ rosdep install --from-paths src --ignore-src -r -y
 
 ## Easy hand-eye calibration 的坑点
 
-##### cv2 版本不对导致模块缺失
+#### Python2.7+ROS环境:AttributeError:‘module’ has no attribute ‘CALIB_HAND_EYE_TSAI’
 
-Python2 pip无法再安装，源码编译后手动添加路径
+上面问题是库引用冲突或者只安装了旧版的opencv。
 
-##### take sample后gui自动关闭
+Python2 pip无法再安装新版的opencv，需要源码编译后手动添加路径。
+
+找到easy_handeye/handeye_calibration_backend_opencv.py，在import cv2前后加入
+
+```
+import sys
+sys.path.append("/home/ur5e/local/lib/python2.7/dist-packages/") #python2 cv2的源码安装路径
+sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
+import cv2
+sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
+```
+
+#### Take sample后gui自动关闭
 
 需要在rviz中打开image插件（不能用camera），订阅/aruco_xxx/result才能正常运行
 
