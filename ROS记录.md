@@ -7,6 +7,16 @@ rosdep install --from-paths src --ignore-src -r -y
 
 
 
+## Easy hand-eye calibration 的坑点
+
+##### cv2 版本不对导致模块缺失
+
+Python2 pip无法再安装，源码编译后手动添加路径
+
+##### take sample后gui自动关闭
+
+需要在rviz中打开image插件（不能用camera），订阅/aruco_xxx/result才能正常运行
+
 
 
 ## rosdep update出现<urlopen error [Errno 111] Connection refused>
