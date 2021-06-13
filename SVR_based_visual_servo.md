@@ -23,3 +23,12 @@ writer.Execute(image)
 # NiftiImageIO ( *.nia, *.nii, *.nii.gz, *.hdr, *.img, *.img.gz )
 # PNGImageIO ( *.png, *.PNG )
 ```
+
+## Ubuntu安装ITK
+
+下载源码
+
+https://itk.org/download/
+
+
+

@@ -163,7 +163,26 @@ sudo apt-get install ros-kinetic-gazebo8-ros-pkgs ros-kinetic-gazebo8-ros-contro
 
 
 
+## Gazebo启动黑屏或者卡住
 
+原因是gazebo尝试下载模型，但是无法下载
+
+解决方法：
+
+1. 断网
+
+2. 手动下载gazebo模型
+
+   ```
+   cd ~/.gazebo/
+   mkdir -p models
+   cd ~/.gazebo/models/
+   wget http://file.ncnynl.com/ros/gazebo_models.txt
+   wget -i gazebo_models.txt
+   ls model.tar.g* | xargs -n1 tar xzvf
+   ```
+
+   
 
 
 
