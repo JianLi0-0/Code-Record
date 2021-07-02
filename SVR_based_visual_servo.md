@@ -24,11 +24,57 @@ writer.Execute(image)
 # PNGImageIO ( *.png, *.PNG )
 ```
 
-## Ubuntu安装ITK
+## Ubuntu编译ITK
 
-下载源码
+ITK源码下载
 
 https://itk.org/download/
 
+CMAKE下载
 
+https://cmake.org/download/
+
+安装步骤
+
+http://www.bewindoweb.com/184.html
+
+## 生成OPTIM头文件库
+
+```
+git clone https://github.com/kthohr/optim.git
+cd optim
+./configure --header-only-version
+```
+
+## 下载最新版本eigen3
+
+```
+git clone https://gitlab.com/libeigen/eigen.git
+```
+
+eigenhi头文件库，不用安装，直接在CMakelist.txt中添加
+
+```
+include_directories( "/.../eigen" )
+```
+
+## 编译elastix
+
+```
+git clone https://github.com/SuperElastix/elastix.git
+cd elastix
+mkdir build
+cd build
+ccmake .. # ()
+
+```
+
+## 离散SVR环境搭建
+
+```
+conda create -n svr_py2 python=2.7
+pip install itk simpleitk ipyparallel numpy scipy -i https://mirrors.aliyun.com/pypi/simple/
+ipcluster start -n 4
+python DiscreteOptimizedRegistration.py
+```
 

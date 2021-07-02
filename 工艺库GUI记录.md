@@ -2,7 +2,44 @@
 
 首先确定driver、cuda以及cudnn的版本，确定它们相互兼容。
 
-安装Nvidia显卡驱动：
+### 安装驱动
+
+#### 方法一：
+
+先根据显卡型号查询适合的driver
+
+https://www.nvidia.com/Download/index.aspx
+
+再查看相应driver适配的cuda版本
+
+https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#abstract
+
+禁用nouveau:
+
+```
+sudo gedit /etc/modprobe.d/blacklist.conf
+最后一行添加：blacklist nouveau
+sudo update-initramfs -u
+sudo reboot
+lsmod | grep nouveau  #没有输出，即说明安装成功
+```
+
+关闭显示模式:
+
+```
+Ctrl+Alt+F1 #进入tty终端模式
+service lightdm stop #关闭显示管理
+```
+
+安装：
+
+```
+sudo sh NVIDIA-Linux-x86_64-415.27.run --no-opengl-files #全程回车
+```
+
+
+
+#### 方法二：
 
 ```
 sudo apt-get update
@@ -12,12 +49,12 @@ sudo reboot
 nvidia-smi
 ```
 
-安装cuda：
+### 安装cuda：
 
 [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)
 
 ```
-sudo sh cuda_8.0.61_375.26_linux.run
+sudo sh cuda_8.0.61_375.26_linux.run –no-opengl-files
 ```
 
 Ctrl + C 可以跳过冗长的条款。遇到选项Do you want to install a symbolic link at /usr/local/cuda时，选择yes。
@@ -30,9 +67,15 @@ export LD_LIBRARY_PATH=${CUDA_HOME}/lib64
 export PATH=${CUDA_HOME}/bin:${PATH}
 ```
 
-source .bashrc， 然后 nvcc -V 查看CUDA是否安装成功。
+source .bashrc， 然后
 
-安装cudnn：
+ ```
+ nvcc -V
+ ```
+
+查看CUDA是否安装成功。
+
+### 安装cudnn：
 
 [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)
 
@@ -44,14 +87,14 @@ sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 
-如何卸载CUDA：
+### 如何卸载CUDA：
 
 ```
 sudo /usr/local/cuda-10.0/bin/uninstall_cuda_10.0.pl
 sudo rm -rf /usr/local/cuda-10.0/
 ```
 
-安装anaconda：
+## 安装anaconda：
 
 到官网下载 [Anaconda.sh](https://www.anaconda.com/products/individual)
 
