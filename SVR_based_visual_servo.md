@@ -78,3 +78,11 @@ ipcluster start -n 4
 python DiscreteOptimizedRegistration.py
 ```
 
+### 安装Ultrasound Image相关软件包
+
+```
+(version smaller than python 3.9)
+pip3 install PyV4L2Camera opencv-python -i https://mirrors.aliyun.com/pypi/simple/
+
+```
+

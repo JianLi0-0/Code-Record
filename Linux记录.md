@@ -1,3 +1,9 @@
+### linux生僻指令
+
+```
+nautilus . #当前打开文件夹gui
+```
+
 ## 使用cnpmjs镜像加速github代码下载
 
 例如，将
@@ -98,7 +104,9 @@ git add .
 git commit -m 'update .gitignore'
 ```
 
-### 
+### Anaconda关闭终端自动激活base
 
-
+```
+conda config --set auto_activate_base false
+```
 
