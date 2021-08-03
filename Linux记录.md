@@ -29,7 +29,7 @@ sudo openconnect server_ip -u user_name
 查看pid：
 
 ```
-ps -ef|grep ros
+ps -ef | grep roscore
 ```
 
 杀死进程：

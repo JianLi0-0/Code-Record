@@ -71,6 +71,22 @@ sudo apt-get install ros-kinetic-gazebo9-*
 
 ## 配置VS Code进行ROS开发
 
+## 方法一：
+
+安装所需要的插件：ROS，C/C++，C++ Intellisense，CMake Tool
+
+新建ROS workspace并执行catkin_make
+
+在c_cpp_properties.json中添加
+
+```
+"compileCommands": "${workspaceFolder}/build/compile_commands.json"
+```
+
+点击菜单栏： Terminal->Configure default build task，选择catkin_make: build
+
+## 方法二：
+
 安装所需要的插件：C/C++，C++ Intellisense，CMake Tool
 
 新建ROS workspace并执行catkin_make。
