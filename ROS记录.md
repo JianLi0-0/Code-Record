@@ -71,27 +71,11 @@ sudo apt-get install ros-kinetic-gazebo9-*
 
 ## 配置VS Code进行ROS开发
 
-## 方法一：
-
-安装所需要的插件：ROS，C/C++，C++ Intellisense，CMake Tool
-
-新建ROS workspace并执行catkin_make
-
-在c_cpp_properties.json中添加
-
-```
-"compileCommands": "${workspaceFolder}/build/compile_commands.json"
-```
-
-点击菜单栏： Terminal->Configure default build task，选择catkin_make: build
-
-## 方法二：
-
-安装所需要的插件：C/C++，C++ Intellisense，CMake Tool
+安装所需要的插件：ROS，C/C++，C++ Intellisense，CMake Tool。
 
 新建ROS workspace并执行catkin_make。
 
-#### 编译快捷键
+#### 定义编译快捷键，生成compile_commands.json
 
 点击菜单栏： Terminal->Configure default build task，选择catkin_make: build，然后在.vscode的文件夹会生成并同时打开一个task.json文件，将其修改成
 
@@ -104,10 +88,11 @@ sudo apt-get install ros-kinetic-gazebo9-*
 			"type": "shell",
 			"command": "catkin_make",
 			"args": [
-				"-j4",
+				"-j8",
 				"-DCMAKE_BUILD_TYPE=Release",
 				"-DCMAKE_EXPORT_COMPILE_COMMANDS=1",
-				"-DCMAKE_CXX_STANDARD=14"
+				"-DCMAKE_CXX_STANDARD=14",
+				"-DCATKIN_WHITELIST_PACKAGES="
 			],
 			"problemMatcher": [
 				"$catkin-gcc"
@@ -198,7 +183,15 @@ sudo apt-get install ros-kinetic-gazebo8-ros-pkgs ros-kinetic-gazebo8-ros-contro
    ls model.tar.g* | xargs -n1 tar xzvf
    ```
 
-   
+
+
+
+## 零散命令
+
+```
+rosrun image_view image_view image:=/aruco_single/result
+
+```
 
 
 

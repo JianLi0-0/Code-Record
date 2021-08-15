@@ -86,3 +86,13 @@ pip3 install PyV4L2Camera opencv-python -i https://mirrors.aliyun.com/pypi/simpl
 
 ```
 
+## 使用Armadillo矩阵运算库
+
+在CMakeLists.txt中添加:
+
+```
+set(ARMADILLO_INCLUDE_DIR /home/sunlab/Desktop/SVR/armadillo/include)
+find_package(Armadillo REQUIRED)
+include_directories(${ARMADILLO_INCLUDE_DIRS})
+```
+

@@ -18,3 +18,18 @@ sudo nano /private/etc/ssh/ssh_config
 ForwardX11 yes
 ```
 
+编辑文件/Users/lijian/.ssh/config
+
+```
+Host sever_name
+  HostName sever_ip
+  User sunlab
+  ForwardAgent yes
+  ForwardX11 yes
+  ForwardX11Trusted yes
+```
+
+
+
+
+
