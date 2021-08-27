@@ -189,8 +189,8 @@ sudo apt-get install ros-kinetic-gazebo8-ros-pkgs ros-kinetic-gazebo8-ros-contro
 ## 零散命令
 
 ```
-rosrun image_view image_view image:=/aruco_single/result
-
+查看摄像头图像：rosrun image_view image_view image:=/aruco_single/result
+保存视频：rosrun image_view video_recorder image:="/usb_cam/image_raw" _filename:="/home/user/video.avi"
 ```
 
 

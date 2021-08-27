@@ -110,3 +110,23 @@ git commit -m 'update .gitignore'
 conda config --set auto_activate_base false
 ```
 
+### 绑定usb、video等设备号
+
+```
+$ lsusb 查看编号
+Bus 001 Device 013: ID 534d:2109 
+
+$ cd /etc/udev/rules.d
+$ sudo touch new.rules $$ sudo gedit new.rules
+在文件中添加以下内容：
+KERNEL=="video*", ATTRS{idVendor}=="534d", ATTRS{idProduct}=="2109", MODE:="0777", SYMLINK+="UltrasoundImage"
+
+$ sudo udevadm trigger
+$ ls -l /dev |grep video
+lrwxrwxrwx  1 root root          6 Aug 17 17:17 UltrasoundImage -> video0
+crwxrw-rwx+ 1 root root    81,   0 Aug 17 17:17 video0
+$ ls /dev/UltrasoundImage
+```
+
+
+
