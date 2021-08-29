@@ -128,5 +128,11 @@ crwxrw-rwx+ 1 root root    81,   0 Aug 17 17:17 video0
 $ ls /dev/UltrasoundImage
 ```
 
+### Python3 Anaconda 安装 opencv
+
+```
+pip install opencv-contrib-python
+```
+
 
 

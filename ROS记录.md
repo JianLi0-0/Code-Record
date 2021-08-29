@@ -185,6 +185,21 @@ sudo apt-get install ros-kinetic-gazebo8-ros-pkgs ros-kinetic-gazebo8-ros-contro
 
 
 
+### 使用Realsense-ros
+
+```
+sudo apt-get install ros-kinetic-realsense2-*
+sudo apt-get install ros-kinetic-rgbd-launch
+cd /etc/udev/rules.d/
+sudo touch 99-realsense-libusb.rules && sudo gedit 99-realsense-libusb.rules
+(https://github.com/IntelRealSense/librealsense/blob/master/config/99-realsense-libusb.rules)
+Ctrl+C, Ctrl+V
+```
+
+
+
+
+
 
 ## 零散命令
 
