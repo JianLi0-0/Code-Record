@@ -7,6 +7,16 @@ rosdep install --from-paths src --ignore-src -r -y
 
 
 
+## rosdep init失败
+
+```
+sudo pip install rosdepc
+sudo rosdepc init
+rosdepc update
+```
+
+
+
 ## Easy hand-eye calibration 的坑点
 
 #### Python2.7+ROS环境:AttributeError:‘module’ has no attribute ‘CALIB_HAND_EYE_TSAI’
