@@ -1,11 +1,14 @@
+## 指定build与devel目录
+```
+catkin_make --build arm-build/build -DCATKIN_DEVEL_PREFIX=$PWD/arm-build/devel
+```
+
 ## 自动安装ros依赖项
 
 ```
 cd workspace
 rosdep install --from-paths src --ignore-src -r -y
 ```
-
-
 
 ## rosdep init失败
 
@@ -14,69 +17,6 @@ sudo pip install rosdepc
 sudo rosdepc init
 rosdepc update
 ```
-
-
-
-## Easy hand-eye calibration 的坑点
-
-#### Python2.7+ROS环境:AttributeError:‘module’ has no attribute ‘CALIB_HAND_EYE_TSAI’
-
-上面问题是库引用冲突或者只安装了旧版的opencv。
-
-Python2 pip无法再安装新版的opencv，需要源码编译后手动添加路径。
-
-找到easy_handeye/handeye_calibration_backend_opencv.py，在import cv2前后加入
-
-```
-import sys
-sys.path.append("/home/ur5e/local/lib/python2.7/dist-packages/") #python2 cv2的源码安装路径
-sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
-import cv2
-sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
-```
-
-#### Take sample后gui自动关闭
-
-需要在rviz中打开image插件（不能用camera），订阅/aruco_xxx/result才能正常运行
-
-
-
-## rosdep update出现<urlopen error [Errno 111] Connection refused>
-
-将原有的nameserver这一行注释，并添加下面两行：
-
-```
-sudo gedit /etc/resolv.conf
-
-nameserver 8.8.8.8 #google域名服务器
-nameserver 8.8.4.4 #google域名服务器
-```
-
-保存退出，执行
-
-```
-sudo  apt-get update
-rosdep update
-```
-
-
-
-
-
-## ubuntu16 kinetic gazebo7 升级 gazebo9
-
-```
-sudo apt-get remove ros-kinetic-gazebo*
-sudo apt-get remove libgazebo*
-sudo apt-get remove gazebo*
-sudo nano /etc/apt/sources.list.d/gazebo-stable.list
-添加 “deb http://packages.osrfoundation.org/gazebo/ubuntu-stable xenial main”
-wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-sudo apt-get install ros-kinetic-gazebo9-*
-```
-
-
-
 
 
 ## 配置VS Code进行ROS开发
@@ -130,93 +70,6 @@ Ctrl + shift+B 选择 catkin_make 之后在devel下面会生成一个compile_com
 
 (或者 ctrl+shift+p，输入C/C++:Edit Configuration进行调整 ？ )
 
-
-
-
-
-## 在python3中使用ros
-
-```
-python3 -m pip install rospkg
-```
-
-
-
-## 安装PCL
-
-```
-sudo apt install libpcl-dev
-```
-
-
-
-## 当gazebo版本与ros默认版本冲突时
-
-```
-sudo apt install ros-kinetic-desktop-full
-```
-
-上述指令默认安装gazebo7。
-
-若想安装其他版本，使用：
-
-```
-sudo apt install ros-kinetic-desktop
-```
-
-再独立安装想要的gazebo版本。
-
-最后用下列指令安装gazebo-ros：
-
-```
-sudo apt-get install ros-kinetic-gazebo8-ros-pkgs ros-kinetic-gazebo8-ros-control
-```
-
-
-
-## Gazebo启动黑屏或者卡住
-
-原因是gazebo尝试下载模型，但是无法下载
-
-解决方法：
-
-1. 断网
-
-2. 手动下载gazebo模型
-
-   ```
-   cd ~/.gazebo/
-   mkdir -p models
-   cd ~/.gazebo/models/
-   wget http://file.ncnynl.com/ros/gazebo_models.txt
-   wget -i gazebo_models.txt
-   ls model.tar.g* | xargs -n1 tar xzvf
-   ```
-
-
-
-### 使用Realsense-ros
-
-```
-sudo apt-get install ros-kinetic-realsense2-*
-sudo apt-get install ros-kinetic-rgbd-launch
-cd /etc/udev/rules.d/
-sudo touch 99-realsense-libusb.rules && sudo gedit 99-realsense-libusb.rules
-(https://github.com/IntelRealSense/librealsense/blob/master/config/99-realsense-libusb.rules)
-Ctrl+C, Ctrl+V
-```
-
-
-
-
-
-
-## 零散命令
-
-```
-查看摄像头图像：rosrun image_view image_view image:=/aruco_single/result
-保存视频：rosrun image_view video_recorder image:="/usb_cam/image_raw" _filename:="/home/user/video.avi"
-```
 
 
 
