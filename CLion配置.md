@@ -11,8 +11,8 @@
 ```
 
 ### 本地代码远程编译
-假设是远程环境为docker
 
+### docker设置
 安装ssh-server
 ```
 sudo apt-get install openssl openssh-server
@@ -46,8 +46,7 @@ if [ -f /root/start_ssh.sh ]; then
 fi
 ```
 
-
-在docker中输入下面指令获取开发ros所需环境变量
+在docker中输入下面指令获取开发ros所需环境变量,
 ```
 ros_env="AMENT_PREFIX_PATH CMAKE_PREFIX_PATH COLCON_PREFIX_PATH PKG_CONFIG_PATH PYTHONPATH LD_LIBRARY_PATH PATH ROS_DISTRO ROS_PYTHON_VERSION ROS_LOCALHOST_ONLY ROS_VERSION"
 env_string=""
@@ -57,6 +56,23 @@ done
 echo "$env_string"
 ```
 
+### 本机设置
+在设置中的 Build、Eexcution、Deployment  —>  Toolchains  —>  点击+号添加[docker toolchain]，选择Remote host
+新建ssh连接，若并在docker中安装相应的编译调试工具
+
+在Build、Eexcution、Deployment -> CMake 中添加远程CMake
+```
+Toolchain: docker toolchain
+CMake Options: -DCATKIN_DEVEL_PREFIX=../devel(根目录为build)
+Build directory: clion/build
+Enviroment: 输入前面获取的docker中的环境变量，例如: AMENT_PREFIX_PATH=;CMAKE_PREFIX_PATH=/opt/ros/noetic; ...
+```
+
+重载CMake
+第一次应该会报错，因为编译生成的文件不会自动同步到本机，需手动同步
+打开Tools -> Deployment -> Browse Remote Host可查看远程文件目录
+找到/tmp/tmp.xxx，右键选择下载到本地（Tools -> Deployment -> Configurations, 在Mappings页中可查看映射地址）
+再次重载CMake
 
 ### 设置terminal路径为当前目录
 ```
