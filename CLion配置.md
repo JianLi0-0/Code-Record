@@ -58,6 +58,7 @@ echo "$env_string"
 
 ### 本机设置
 在设置中的 Build、Eexcution、Deployment  —>  Toolchains  —>  点击+号添加[docker toolchain]，选择Remote host
+
 新建ssh连接，若并在docker中安装相应的编译调试工具
 
 在Build、Eexcution、Deployment -> CMake 中添加远程CMake
@@ -69,9 +70,13 @@ Enviroment: 输入前面获取的docker中的环境变量，例如: AMENT_PREFIX
 ```
 
 重载CMake
+
 第一次应该会报错，因为编译生成的文件不会自动同步到本机，需手动同步
+
 打开Tools -> Deployment -> Browse Remote Host可查看远程文件目录
+
 找到/tmp/tmp.xxx，右键选择下载到本地（Tools -> Deployment -> Configurations, 在Mappings页中可查看映射地址）
+
 再次重载CMake
 
 ### 设置terminal路径为当前目录
