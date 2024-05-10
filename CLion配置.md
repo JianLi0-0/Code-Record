@@ -12,7 +12,7 @@
 
 ### 本地代码远程编译
 
-### docker设置
+#### docker设置
 安装ssh-server
 ```
 sudo apt-get install openssl openssh-server
@@ -56,7 +56,7 @@ done
 echo "$env_string"
 ```
 
-### 本机设置
+#### 本机设置
 在设置中的 Build、Eexcution、Deployment  —>  Toolchains  —>  点击+号添加[docker toolchain]，选择Remote host
 
 新建ssh连接，若并在docker中安装相应的编译调试工具
