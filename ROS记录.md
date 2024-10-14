@@ -1,8 +1,10 @@
 ## 远程ssh后台运行程序
+```
 tmux new -s nav
 tmux attach nav
 tmux kill-session -t nav
 tmux kill-server
+```
 
 ## 指定build与devel目录
 ```
