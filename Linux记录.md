@@ -1,3 +1,19 @@
+### 命令行快捷指令(写入~/.bashrc)
+```
+function hm_scp(){
+echo "file name: $1"
+scp -r $1 honymow@10.42.0.1:/userdata/workdir/
+}
+
+function hm_remote_159_scp(){
+echo "file name: $1"
+scp -r honymow@192.168.1.159:$1 .
+}
+
+alias hm_export='export ROS_MASTER_URI=http://10.42.0.1:11311 export ROS_HOSTNAME=10.42.0.223'
+alias hm_ssh='sshpass -p 'honymow' ssh -o StrictHostKeyChecking=no honymow@10.42.0.1'
+```
+
 ### linux生僻指令
 
 ```
